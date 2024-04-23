@@ -1,0 +1,67 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const page_name = Astro.url.pathname.match(/^(\/[^\/]*)/g)![0];
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title} &middot; JSON-WF</title>
+    <meta name="generator" content={Astro.generator}>
+    <meta name="description" content={description}>
+    <meta name="apple-mobile-web-app-title" content="JSON-WF">
+    <meta name="application-name" content="JSON-WF">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="sitemap" href="/sitemap-index.xml">
+  </head>
+  <body class="antialiased scroll-smooth text-slate-600 dark:bg-slate-600 dark:text-slate-200 selection:bg-pink-500 selection:text-white" id="top">
+    <div class="mb-2 bg-slate-50 dark:bg-slate-700 text-center">
+      <a class="block p-2" href="#main-content">Skip to main content</a>
+    </div>
+    <div class="md:max-w-3xl md:mx-auto md:grid md:grid-cols-[200px_60ch]">
+      <nav class="pt-8 px-4 md:sticky md:top-0 md:h-screen">
+        <ul>
+          <li class="mb-4 float-left md:float-none">
+            <a class="no-underline" href="/">
+              {page_name == "/" && <Fragment set:html={`&rarr;`} />} Home
+            </a>
+          </li>
+          <li class="ml-4 mb-4 float-left md:float-none md:ml-0">
+            <a class="no-underline" href="/spec/">
+              {page_name == "/spec" && <Fragment set:html={`&rarr;`} />} Specification
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <main class="pt-10 px-4 clear-both md:clear-none" id="main-content">
+        <slot />
+        <p class="mt-6 text-right text-sm"><a href="#top">&uarr; Back to top</a></p>
+      </main>
+    </div>
+    <footer class="mt-8 px-4 text-sm md:max-w-3xl md:mx-auto">
+      <div class="mb-6 pt-4 border-t border-slate-200">
+        <div class="md:mb-1 md:flex md:flex-wrap">
+          <p>
+            Copyright © 2024 <a class="h-card" href="https://www.wackomenace.co.uk/contact/" target="_blank" rel="me">Ruben Arakelyan</a>
+          </p>
+          <p class="md:ml-4 md:pl-4 md:border-l md:border-slate-200">
+            All work licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferer license">CC BY-SA 4.0</a> unless otherwise stated
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

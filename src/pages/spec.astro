@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Specification" description="JSON-WF schema specification">
+  <section class="mb-6">
+    <h1 class="text-4xl mb-6">JSON-WF schema specification</h1>
+    <p class="mb-6">JSON-WF documents are simply JSON documents that follow the JSON-WF schema.</p>
+    <h2 class="text-2xl mb-6">General concepts</h2>
+    <ul class="list-disc mb-6">
+      <li>JSON-WF documents must be valid JSON documents</li>
+      <li>All attributes are required unless labelled as optional</li>
+      <li>All attributes are lowercase</li>
+      <li>All values are plain-text (e.g. embedded HTML should be rendered as plain text rather than parsed)</li>
+      <li>Any unrecognised attribute should be ignored</li>
+      <li>There are no limits to the number of groups or feeds per group</li>
+    </ul>
+    <h2 class="text-2xl mb-6">Top-level attributes</h2>
+    <dl class="mb-6">
+      <dt class="font-bold">@version</dt>
+      <dd class="pl-4 pb-4">The string "1.0".</dd>
+      <dt class="font-bold">@docs</dt>
+      <dd class="pl-4 pb-4">The string "https://www.json-wf.org.uk/spec".</dd>
+      <dt class="font-bold">title</dt>
+      <dd class="pl-4 pb-4">The name of the document; may be displayed by a feed reader when importing the document.</dd>
+      <dt class="font-bold">owner <em class="font-normal">optional</em></dt>
+      <dd class="pl-4 pb-4">If it is provided, an object containing at least <strong>one</strong> of <code>name</code> (the name of the author of the document) and/or <code>website</code> (the URL of the website belonging to the author of the document).</dd>
+      <dt class="font-bold">modified_at</dt>
+      <dd class="pl-4 pb-4">An <a href="https://www.rfc-editor.org/rfc/rfc3339.html" target="_blank" rel="noopener noreferer">RFC 3339</a> date/time representing when the document was last updated.</dd>
+      <dt class="font-bold">groups</dt>
+      <dd class="pl-4 pb-4">An array of objects, each representing a grouping or one or more web feeds.</dd>
+    </dl>
+    <h2 class="text-2xl mb-6"><code>groups</code> attributes</h2>
+    <dl class="mb-6">
+      <dt class="font-bold">title</dt>
+      <dd class="pl-4 pb-4">The name of the group (by convention, authors wishing to use only a single group for all their web feeds should name that group "All").</dd>
+      <dt class="font-bold">feeds</dt>
+      <dd class="pl-4 pb-4">An array of objects, each representing one web feed.</dd>
+    </dl>
+    <h2 class="text-2xl mb-6"><code>feeds</code> attributes</h2>
+    <dl class="mb-6">
+      <dt class="font-bold">title</dt>
+      <dd class="pl-4 pb-4">The name of the web feed.</dd>
+      <dt class="font-bold">description <em class="font-normal">optional</em></dt>
+      <dd class="pl-4 pb-4">The description of the web feed.</dd>
+      <dt class="font-bold">type</dt>
+      <dd class="pl-4 pb-4">The string "rss" (for RSS feeds), "atom" (for Atom feeds) or "json" (for JSON feeds).</dd>
+      <dt class="font-bold">website</dt>
+      <dd class="pl-4 pb-4">The URL of the website that contains the web feed (for example, the HTML index of the blog).</dd>
+      <dt class="font-bold">feed</dt>
+      <dd class="pl-4 pb-4">The URL of the web feed.</dd>
+    </dl>
+    <h2 class="text-2xl mb-6">Media type</h2>
+    <p class="mb-6">The media type <code>application/x-wf+json</code> is proposed for JSON-WF documents.</p>
+    <h2 class="text-2xl mb-6">Validation</h2>
+    <p class="mb-6">A <a href="/json-wf-schema-1.0.json">JSON Schema</a> for JSON-WF is provided to assist with validation of JSON-WF documents. The <a href="https://www.jsonschemavalidator.net" target="_blank" rel="noopener noreferer">JSON Schema Validator</a> can be used with this schema to validate conformance with this specification.</p>
+    <h2 class="text-2xl mb-6">Autodiscovery</h2>
+    <p class="mb-6">To assist with autodiscovery of JSON-WF documents by feed readers when given the URL of a website (similar to web feed autodiscovery), a <code>link</code> element similar to the following may be used:</p>
+    <p class="mb-6"><code>&lt;link rel="alternate" type="application/x-wf+json" title="Ruben Arakelyan's blogroll" href="/blogroll.json"&gt;</code></p>
+    <h2 class="text-2xl mb-6">Example JSON-WF document</h2>
+    <pre>
+      <code is:raw>
+        {
+          "@version": "1.0",
+          "@docs": "https://www.json-wf.org.uk/spec",
+          "title": "Ruben Arakelyan's blogroll",
+          "owner": {
+            "name": "Ruben Arakelyan",
+            "website": "https://www.wackomenace.co.uk"
+          },
+          "modified_at": "2024-04-23T15:00:00+0100",
+          "groups": [
+            {
+              "title": "All",
+              "feeds": [
+                {
+                  "title": "Dave's cool site",
+                  "description": "",
+                  "type": "rss",
+                  "website": "https://www.example.com",
+                  "feed": "https://www.example.com/rss.xml"
+                }
+              ]
+            }
+          ]
+        }
+      </code>
+    </pre>
+  </section>
+</Layout>

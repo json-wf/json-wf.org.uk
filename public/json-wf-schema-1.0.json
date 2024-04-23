@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.json-wf.org.uk/json-wf-schema-1.0.json",
+  "title": "JSON-WF",
+  "description": "A blogroll interchange format",
+  "type": "object",
+  "properties": {
+    "@version": {
+      "description": "The version of the JSON-WF specification being used. Must be 1.0.",
+      "const": "1.0"
+    },
+    "@docs": {
+      "description": "The URL of the JSON-WF specification being used. Must be https://www.json-wf.org.uk/spec.",
+      "const": "https://www.json-wf.org.uk/spec"
+    },
+    "title": {
+      "description": "The name of the document; may be displayed by a feed reader when importing the document.",
+      "type": "string"
+    },
+    "owner": {
+      "description": "An object containing at least one of 'name' (the name of the author of the document) and/or 'website' (the URL of the website belonging to the author of the document).",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the author of the document.",
+          "type": "string"
+        },
+        "website": {
+          "description": "The website belonging to the author of the document.",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["name"]
+        },
+        {
+          "required": ["website"]
+        }
+      ]
+    },
+    "modified_at": {
+      "description": "An RFC 3339 date/time representing when the document was last updated.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "groups": {
+      "description": "An array of objects, each representing a grouping or one or more web feeds.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "The name of the group (by convention, authors wishing to use only a single group for all their web feeds should name that group 'All').",
+            "type": "string"
+          },
+          "feeds": {
+            "description": "An array of objects, each representing one web feed.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "description": "The name of the web feed.",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "The description of the web feed.",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "The string 'rss' (for RSS feeds), 'atom' (for Atom feeds) or 'json' (for JSON feeds).",
+                  "enum": ["rss", "atom", "json"]
+                },
+                "website": {
+                  "description": "The URL of the website that contains the web feed (for example, the HTML index of the blog).",
+                  "type": "string",
+                  "format": "uri"
+                },
+                "feed": {
+                  "description": "The URL of the web feed.",
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "required": ["title", "type", "website", "feed"]
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["title", "feeds"]
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["@version", "@docs", "title", "modified_at", "groups"]
+}
