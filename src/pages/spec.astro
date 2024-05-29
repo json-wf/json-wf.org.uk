@@ -55,8 +55,9 @@ import Layout from "../layouts/Layout.astro";
     <h2 class="text-2xl mb-6">Validation</h2>
     <p class="mb-6">A <a href="/json-wf-schema-1.0.json">JSON Schema</a> for JSON-WF is provided to assist with validation of JSON-WF documents. The <a href="https://www.jsonschemavalidator.net" target="_blank" rel="noopener noreferer">JSON Schema Validator</a> can be used with this schema to validate conformance with this specification.</p>
     <h2 class="text-2xl mb-6">Autodiscovery</h2>
-    <p class="mb-6">To assist with autodiscovery of JSON-WF documents by feed readers when given the URL of a website (similar to web feed autodiscovery), a <code>link</code> element similar to the following may be used:</p>
-    <p class="mb-6"><code>&lt;link rel="alternate" type="application/x-wf+json" title="Ruben Arakelyan's blogroll" href="/blogroll.json"&gt;</code></p>
+    <p class="mb-6">To assist with autodiscovery of JSON-WF documents by feed readers when given the URL of a website (similar to web feed and <a href="https://josh.blog/2024/05/blogrolls" target="_blank" rel="noopener noreferer">OPML blogroll</a> autodiscovery), a <code>link</code> element similar to the following may be used:</p>
+    <p class="mb-6"><code>&lt;link rel="blogroll" type="application/x-wf+json" title="Ruben Arakelyan's blogroll" href="/blogroll.json"&gt;</code></p>
+    <p class="mb-6">It is also recommended that the JSON-WF document is either located at <code>/.well-known/recommendations.json</code>, or that path redirects to the document located at another path.</p>
     <h2 class="text-2xl mb-6">Example JSON-WF document</h2>
     <pre>
       <code is:raw>
