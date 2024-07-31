@@ -4,5 +4,5 @@ services:
   web:
     image: ghcr.io/json-wf/json-wf.org.uk:main
     ports:
-      - "4004:4004"
+      - "127.0.0.1:4004:4004"
     restart: always
