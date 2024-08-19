@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home &middot; JSON-WF</title>
+    <meta name="description" content="JSON-WF - a blogroll interchange format">
+    <meta name="apple-mobile-web-app-title" content="JSON-WF">
+    <meta name="application-name" content="JSON-WF">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="/assets/tailwind.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body class="antialiased scroll-smooth text-slate-600 dark:bg-slate-600 dark:text-slate-200 selection:bg-pink-500 selection:text-white" id="top">
+    <div class="mb-2 bg-slate-50 dark:bg-slate-700 text-center">
+      <a class="block p-2" href="#main-content" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">Skip to main content</a>
+    </div>
+    <div class="md:max-w-3xl md:mx-auto md:grid md:grid-cols-[200px_60ch]">
+      <nav class="pt-8 px-4 md:sticky md:top-0 md:h-screen">
+        <ul>
+          <li class="mb-4 float-left md:float-none">
+            <a class="hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out" href="/">
+              &rarr; Home
+            </a>
+          </li>
+          <li class="ml-4 mb-4 float-left md:float-none md:ml-0">
+            <a class="hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out" href="/spec/">
+              Specification
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <main class="pt-10 px-4 clear-both md:clear-none" id="main-content">
+        <section class="mb-6">
+          <h1 class="text-4xl mb-6">JSON-WF - a blogroll interchange format</h1>
+          <p class="mb-6">JSON-WF (JSON for Web Feeds) is a blogroll interchange format that is to JSON what <a href="http://opml.org" target="_blank" rel="noopener noreferer" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">OPML</a> is to XML.</p>
+          <h2 class="text-2xl mb-6">Why?</h2>
+          <p class="mb-6">Most online data interchange these days (with APIs being a good example) is done using JSON, possibly with a schema to describe expected keys, values and types. There are far more JSON parsing libraries for every possible programming or scripting language than there are XML parsing libraries, and they tend to be smaller and faster too due to the more limited feature-set.</p>
+          <h2 class="text-2xl mb-6">Why not OPML?</h2>
+          <p class="mb-6">OPML has been around for a long time, and is a de-facto standard supported by most feed readers for importing and exporting blogrolls. However, its design is much more complex than required for this purpose, and indeed most of that complexity is used not for feed readers but for outliners, its primary focus. The goal is to create a dedicated format for blogroll sharing.</p>
+          <h2 class="text-2xl mb-6">Where do I start?</h2>
+          <p class="mb-6">The JSON-WF specification is very new, so there are currently no known implementations in feed readers. The advice is - please wait! The aim is to encourage developers of feed readers and other associated applications to add support in time.</p>
+          <p class="mb-6">If you run one or more sites that currently use OPML to share blogrolls with readers, please consider also publishing an equivalent JSON-WF file.</p>
+          <p class="mb-6">Read the <a href="/spec/" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">JSON-WF specification</a> to start building or adding support for JSON-WF blogrolls to your website or application.</p>
+        </section>
+        <p class="mt-6 text-right text-sm"><a href="#top" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">&uarr; Back to top</a></p>
+      </main>
+    </div>
+    <footer class="mt-8 px-4 text-sm md:max-w-3xl md:mx-auto">
+      <div class="mb-6 pt-4 border-t border-slate-200">
+        <div class="md:mb-1 md:flex md:flex-wrap">
+          <p>
+            Copyright © 2024 <a class="h-card" href="https://www.wackomenace.co.uk/contact/" target="_blank" rel="me" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">Ruben Arakelyan</a>
+          </p>
+          <p class="md:ml-4 md:pl-4 md:border-l md:border-slate-200">
+            All work licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferer license" class="underline underline-offset-2 hover:decoration-2 hover:transition hover:duration-300 hover:ease-in-out active:decoration-2 active:transition active:duration-300 active:ease-in-out focus:decoration-2 focus:transition focus:duration-300 focus:ease-in-out">CC BY-SA 4.0</a> unless otherwise stated
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
